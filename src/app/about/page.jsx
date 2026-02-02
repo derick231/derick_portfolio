@@ -1,9 +1,18 @@
-import React from 'react'
+"use client"
+
+import { motion } from "framer-motion";
 
 const AboutPage = () => {
   return (
-    <div>AboutPage</div>
-  )
-}
+    <motion.div
+      className="h-full overflow-hidden"
+      initial={{ y: "-200vh" }}
+      animate={{ y: 0 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+    >
+      About
+    </motion.div>
+  );
+};
 
-export default AboutPage
+export default AboutPage;

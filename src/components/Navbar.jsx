@@ -12,6 +12,7 @@ const links = [
   { url: "/portfolio", title: "Portfolio" },
   { url: "/contact", title: "Contact" },
 ];
+  
 
 const socialLinks = [
   {
@@ -77,16 +78,16 @@ const listVariants = {
   },
 };
 
-const listItemVariants ={
-  closed:{
+const listItemVariants = {
+  closed: {
     x: -10,
-    opacity:0
+    opacity: 0,
   },
-  opened:{
+  opened: {
     x: 0,
-    opacity: 1
-  }
-}
+    opacity: 1,
+  },
+};
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -162,9 +163,7 @@ const Navbar = () => {
           >
             {links.map((link) => (
               <motion.div key={link.title} variants={listItemVariants}>
-                <Link href={link.url} >
-                  {link.title}
-                </Link>
+                <Link href={link.url}>{link.title}</Link>
               </motion.div>
             ))}
           </motion.div>
