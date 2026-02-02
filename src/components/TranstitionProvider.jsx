@@ -9,10 +9,10 @@ const TransitionProvider = ({ children }) => {
 
   return (
     <AnimatePresence mode="wait">
-      <div key={pathname} 
-      className="w-screen h-screen bg-gradient-to-b from-blue-100 to-red-50 overflow-hidden"
+      <div
+        key={pathname}
+        className="w-screen h-screen bg-gradient-to-b from-blue-100 to-red-50 overflow-scroll"
       >
-        
         {/* Top curtain */}
         <motion.div
           initial={{ height: "140vh" }}
@@ -42,7 +42,7 @@ const TransitionProvider = ({ children }) => {
         />
 
         {/* Layout */}
-        <div className="relative h-24">
+        <div className=" h-24">
           <Navbar />
         </div>
 
@@ -50,11 +50,10 @@ const TransitionProvider = ({ children }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="relative z-10 h-[calc(100vh-6rem)]"
+          className="h-[calc(100vh-6rem)] "
         >
           {children}
         </motion.div>
-
       </div>
     </AnimatePresence>
   );
