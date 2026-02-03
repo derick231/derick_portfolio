@@ -1,6 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Brain from "@/components/Brain";
+import { ScrollContext } from "@/components/ScrollContext";
+import { useInView } from "framer-motion";
+import { useScroll, motion } from "framer-motion";
+import { useContext, useRef } from "react";
 
 const skills = [
   { id: 1, title: "Javascript" },
@@ -13,7 +17,57 @@ const skills = [
   { id: 8, title: "Postgres" },
 ];
 
+const skillsContainerVariants = {
+  hidden: {
+    x: -300,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      when: "beforeChildren",
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const skillItemVariants = {
+  hidden: {
+    opacity: 0,
+    y: 10,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      // ease: "easeOut",
+    },
+  },
+};
+
 const AboutPage = () => {
+  const containerRef = useRef();
+  const scrollContainer = useContext(ScrollContext);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    container: scrollContainer,
+  });
+
+  const skillRef = useRef();
+  const isSkillInView = useInView(skillRef, {
+    margin: "-100px",
+    // root: scrollContainer,
+  });
+
+  const experienceRef = useRef();
+  const isExperienceInView = useInView(experienceRef, {
+    margin: "-100px",
+  });
+
   return (
     <motion.div
       className=""
@@ -22,7 +76,7 @@ const AboutPage = () => {
       transition={{ duration: 1, ease: "easeOut" }}
     >
       {/* containter */}
-      <div className="h-full ">
+      <div className="lg:flex" ref={containerRef}>
         {/* text container */}
         <div className="p-4 sm:p-8 md:p-12 lg:p-20 xl:p-48 flex flex-col gap-24 md:gap-32 lg:gap-48 xl:gap-54 lg:w-2/3 xl:w-1/2">
           {/* Biography container */}
@@ -61,127 +115,169 @@ const AboutPage = () => {
               </svg>
             </div>
             {/* scroll */}
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 256 256"
-                width="80"
-                height="50"
-              >
-                <rect width="256" height="256" fill="none" />
-                <rect
-                  x="56"
-                  y="24"
-                  width="144"
-                  height="208"
-                  rx="56"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <polyline
-                  points="152 88 128 64 104 88"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <polyline
-                  points="152 168 128 192 104 168"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <line
-                  x1="128"
-                  y1="64"
-                  x2="128"
-                  y2="192"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-              </svg>
-            </div>
+
+            <motion.svg
+              initial={{ opacity: 0.2, y: 0 }}
+              animate={{ opacity: 1, y: "10px" }}
+              transition={{
+                repeat: Infinity,
+                duration: 2,
+                ease: "easeInOut",
+              }}
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 256 256"
+              width="80"
+              height="50"
+            >
+              <rect width="256" height="256" fill="none" />
+              <rect
+                x="56"
+                y="24"
+                width="144"
+                height="208"
+                rx="56"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <polyline
+                points="152 88 128 64 104 88"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <polyline
+                points="152 168 128 192 104 168"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <line
+                x1="128"
+                y1="64"
+                x2="128"
+                y2="192"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+            </motion.svg>
           </div>
+         
           {/* skills container */}
-          <div className="flex flex-col gap-12 justify-center">
-            <h1 className="uppercase text-2xl font-bold">Skills</h1>
+          <div className="flex flex-col gap-12 justify-center" ref={skillRef}>
+            <motion.h1
+              initial={{ x: -300 }}
+              animate={isSkillInView ? { x: 0 } : {}}
+              transition={{ delay: 0.2 }}
+              className="uppercase text-2xl font-bold"
+            >
+              Skills
+            </motion.h1>
+
             {/* skills list */}
-            <div className="flex flex-wrap gap-2 ">
+            <motion.div
+              className="flex flex-wrap gap-2"
+              variants={skillsContainerVariants}
+              initial="hidden"
+              animate={isSkillInView ? "visible" : "hidden"}
+            >
               {skills.map((skill) => (
-                <div
-                  className="p-2 rounded-md bg-black text-white hover:bg-white hover:text-black"
+                <motion.div
                   key={skill.id}
+                  variants={skillItemVariants}
+                  whileHover={{ scale: 1.05 }}
+                  className="p-2 rounded-md bg-black text-white hover:bg-white hover:text-black transition-colors"
                 >
                   {skill.title}
-                </div>
+                </motion.div>
               ))}
-            </div>
-            {/* scroll */}
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 256 256"
-                width="80"
-                height="50"
-              >
-                <rect width="256" height="256" fill="none" />
-                <rect
-                  x="56"
-                  y="24"
-                  width="144"
-                  height="208"
-                  rx="56"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <polyline
-                  points="152 88 128 64 104 88"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <polyline
-                  points="152 168 128 192 104 168"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <line
-                  x1="128"
-                  y1="64"
-                  x2="128"
-                  y2="192"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-              </svg>
-            </div>
+            </motion.div>
+             <motion.svg
+              initial={{ opacity: 0.2, y: 0 }}
+              animate={{ opacity: 1, y: "10px" }}
+              transition={{
+                repeat: Infinity,
+                duration: 2,
+                ease: "easeInOut",
+              }}
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 256 256"
+              width="80"
+              height="50"
+            >
+              <rect width="256" height="256" fill="none" />
+              <rect
+                x="56"
+                y="24"
+                width="144"
+                height="208"
+                rx="56"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <polyline
+                points="152 88 128 64 104 88"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <polyline
+                points="152 168 128 192 104 168"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <line
+                x1="128"
+                y1="64"
+                x2="128"
+                y2="192"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+            </motion.svg>
           </div>
+
           {/* Experience container */}
-          <div className="flex flex-col gap-12 justify-center">
-            <h1 className="uppercase text-2xl font-bold">Experience</h1>
+          <div
+            className="flex flex-col gap-12 justify-center"
+            ref={experienceRef}
+          >
+            <motion.h1
+              initial={{ x: -300 }}
+              animate={isExperienceInView ? { x: "0" } : {}}
+              transition={{ delay: 0.2 }}
+              className="uppercase text-2xl font-bold"
+            >
+              Experience
+            </motion.h1>
             <div>
               {/* Experience List */}
-              <div className="">
+              <motion.div
+                initial={{ x: "-300px" }}
+                animate={isExperienceInView ? { x: "0" } : {}}
+                transition={{ delay: 0.2 }}
+                className=""
+              >
                 {/* Experience List Items */}
                 <div className="flex justify-between h-48 ">
                   {/* left */}
@@ -223,24 +319,22 @@ const AboutPage = () => {
                     <div className="bg-white p-3 font-semibold rounded-b-lg rounded-s-lg shadow-lg w-max">
                       MERN Intern
                     </div>
-                    <div className="italic py-3 text-sm">
-                      First Internship
-                    </div>
+                    <div className="italic py-3 text-sm">First Internship</div>
                     <div className="pb-3 text-sm text-red-400 font-semibold">
-                      2023 
+                      2023
                     </div>
                     <div className="bg-white p-1 w-max text-sm rounded-lg shadow-lg">
                       Evolve IT Hub
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
-          {/* svg container */}
-          <div className="hidden lg:block lg:w-1/3 xl:w-1/2">
-
-          </div>
+        </div>
+        {/* svg container */}
+        <div className="hidden lg:block sticky top-0 z-30 lg:w-1/3 xl:w-1/2 h-screen">
+          <Brain scrollYProgress={scrollYProgress} />
         </div>
       </div>
     </motion.div>
