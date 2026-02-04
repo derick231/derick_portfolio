@@ -8,7 +8,7 @@ const Homepage = () => {
   return (
     <motion.div
       className="h-full overflow-hidden"
-      initial={{ y: "-200vh"}}
+      initial={{ y: "-200vh" }}
       animate={{ y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
     >
@@ -26,8 +26,9 @@ const Homepage = () => {
         {/* Text container */}
         <div className="h-1/2 flex flex-col gap-6 items-center justify-center md:h-full md:w-1/2 md:items-start">
           <h1 className="text-3xl lg:text-5xl font-semibold">
-            Full-stack developer crafting real-world products
+            Derick Subedi – Full-stack Developer
           </h1>
+
           <p className="text-sm font-medium lg:text-lg">
             Welcome to my digital space, where I build real-world web
             applications from concept to deployment. I work across the full
@@ -36,10 +37,16 @@ const Homepage = () => {
           </p>
           {/* buttons */}
           <div className="flex gap-4 text-sm ">
-            <Link href="/portfolio" className="bg-black text-white rounded-md shadow-lg px-2 py-1 hover:bg-white hover:text-black border border-gray-500 duration-300 transition">
+            <Link
+              href="/portfolio"
+              className="bg-black text-white rounded-md shadow-lg px-2 py-1 hover:bg-white hover:text-black border border-gray-500 duration-300 transition"
+            >
               View My Work
             </Link>
-            <Link href="/contact" className="border border-gray-500 rounded-md shadow-lg px-2 py-1 hover:bg-black hover:text-white duration-300 transition">
+            <Link
+              href="/contact"
+              className="border border-gray-500 rounded-md shadow-lg px-2 py-1 hover:bg-black hover:text-white duration-300 transition"
+            >
               Contact Me
             </Link>
           </div>
