@@ -11,34 +11,30 @@ const items = [
   {
     id: 1,
     color: "from-red-800 to-blue-800",
-    title: "React Commerce",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-    img: "https://images.pexels.com/photos/18073372/pexels-photo-18073372/free-photo-of-young-man-sitting-in-a-car-on-a-night-street.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    link: "https://lama.dev",
+    title: "Task Management System",
+    desc: "A full-stack task management system built with React, Node.js, and MongoDB. It features task creation, editing, deletion, and status tracking.",
+    img: "https://images.pexels.com/photos/6804091/pexels-photo-6804091.jpeg",
   },
   {
     id: 2,
     color: "from-blue-800 to-gray-800",
-    title: "Next.js Medium Blog",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-    img: "https://images.pexels.com/photos/18023772/pexels-photo-18023772/free-photo-of-close-up-of-a-person-holding-a-wristwatch.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    link: "https://lama.dev",
+    title: "Next.js Ecommerce Website",
+    desc: "A fully functional e-commerce website built with Next.js, featuring product listings, shopping cart, and secure checkout.",
+    img: "https://images.pexels.com/photos/29502370/pexels-photo-29502370.jpeg",
   },
   {
     id: 3,
     color: "from-gray-800 to-purple-800",
-    title: "Vanilla Book App",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-    img: "https://images.pexels.com/photos/6894528/pexels-photo-6894528.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    link: "https://lama.dev",
+    title: "React Native Movie App",
+    desc: "A mobile application built with React Native that allows users to browse and search for movies. It features a modern UI, smooth animations, and offline support.",
+    img: "https://images.pexels.com/photos/265685/pexels-photo-265685.jpeg"
   },
   {
     id: 4,
     color: "from-purple-800 to-red-800",
-    title: "Spotify Music App",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-    img: "https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    link: "https://lama.dev",
+    title: "Bookstore",
+    desc: "A fully functional bookstore website built with React, Node.js, and MongoDB. It features book listings, shopping cart, and secure checkout.",
+    img: "https://images.pexels.com/photos/877971/pexels-photo-877971.jpeg",
   },
 ];
 
@@ -50,9 +46,10 @@ const PortfolioPage = () => {
   const { scrollYProgress } = useScroll({
     target: ref,
     container: scrollContainer,
+    offset: ["start start", "end end"],
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+  const x = useTransform(scrollYProgress, [0.1, 1], ["0%", "-80%"]);
 
   return (
     <motion.div
@@ -62,39 +59,50 @@ const PortfolioPage = () => {
       transition={{ duration: 1, ease: "easeOut" }}
     >
       <div className="flex justify-end ">
-        <div className="fixed top-96 right-5 lg:right-10 bg-white z-50 shadow-lg w-10 h-10 lg:w-20 lg:h-20 rounded-full flex items-center justify-center">
+        {/* <div className="fixed top-96 right-5 lg:right-10 bg-white z-50 shadow-lg w-10 h-10 lg:w-20 lg:h-20 rounded-full flex items-center justify-center">
           <Link href="/portfolio">
-            
-              <motion.svg
-                animate={{y:"-15px"}}
-                transition={{duration:1.5, ease:"easeInOut", repeat: Infinity, repeatType:"reverse"}}
-                fill="#000000"
-                className="w-4 h-4 lg:w-[30px] lg:h-[30px]"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M11.293,1.293a1,1,0,0,1,1.414,0l5,5a1,1,0,0,1-1.414,1.414L13,4.414V22a1,1,0,0,1-2,0V4.414L7.707,7.707A1,1,0,0,1,6.293,6.293Z" />
-              </motion.svg>
-            
+            <motion.svg
+              animate={{ y: "-15px" }}
+              transition={{
+                duration: 1.5,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+              fill="#000000"
+              className="w-4 h-4 lg:w-[30px] lg:h-[30px]"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M11.293,1.293a1,1,0,0,1,1.414,0l5,5a1,1,0,0,1-1.414,1.414L13,4.414V22a1,1,0,0,1-2,0V4.414L7.707,7.707A1,1,0,0,1,6.293,6.293Z" />
+            </motion.svg>
           </Link>
-        </div>
+        </div> */}
       </div>
-      <div className="h-[600vh] relative" ref={ref}>
-        <div className=" h-[calc(100vh-6rem)] w-screen flex flex-col items-center justify-center">
+      <div className="h-[600vh] xl:h-[800vh] relative" ref={ref}>
+        <div className="  h-[calc(100vh-6rem)]  mb-10 w-screen flex flex-col items-center justify-center text-center">
           <motion.div
-            initial={{ y: 0 }}
-            animate={{ y: "-50px" }}
+            initial={{ x: 0 }}
+            animate={{ x: "-50px" }}
             transition={{
               repeat: Infinity,
               duration: 2,
               repeatType: "reverse",
               ease: "easeInOut",
             }}
+            className="mt-10"
           >
-            <Image src="/working.svg" width={500} height={500} alt="works" />
+            <div className="">
+              <Image
+                src="/working.svg"
+                width={300}
+                height={300}
+                alt="works"
+              />
+            </div>
           </motion.div>
-          <div className="flex gap-2 items-center">
-            <h1 className=" text-5xl md:text-6xl lg:text-8xl text-center font-light">
+          <div className="flex gap-2 items-center justify-center">
+            <h1 className=" text-5xl text-center font-light">
               My Works
             </h1>
             <motion.svg
@@ -106,11 +114,12 @@ const PortfolioPage = () => {
                 ease: "easeInOut",
                 repeatType: "reverse",
               }}
-              width="100px"
-              height="100px"
+              width="60px"
+              height="60px"
               viewBox="0 0 72 72"
               id="emoji"
               xmlns="http://www.w3.org/2000/svg"
+              // className="w-16 h-16 lg:w-24 lg:h-24"
             >
               <g id="color">
                 <path
@@ -203,22 +212,27 @@ const PortfolioPage = () => {
             </motion.svg>
           </div>
         </div>
-        <div className=" sticky top-0 flex h-screen gap-4 items-center overflow-hidden">
+        <div className=" sticky top-0 flex h-screen items-center overflow-hidden">
           <motion.div style={{ x }} className="flex" ref={containerRef}>
             <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-r from-purple-800 to-red-800" />
             {items.map((item) => (
               <div
                 key={item.id}
-                className={`h-screen w-screen flex items-center justify-center bg-gradient-to-r ${item.color}`}
+                className={`h-screen w-screen flex items-center justify-center flex-none bg-gradient-to-r ${item.color}`}
               >
-                <div className="flex flex-col text-white gap-8">
-                  <h1 className="text-xl font-bold md:text-4xl lg:text-6xl xl:text-8xl">
+                <div className="flex flex-col text-white gap-2 md:gap-4 lg:gap-6 max-h-[85vh] justify-center items-center p-4">
+                  <h1 className="text-xl font-bold md:text-3xl lg:text-5xl xl:text-7xl 2xl:text-8xl text-center">
                     {item.title}
                   </h1>
-                  <div className="relative  w-80 h-56 md:w-96 md:h-64 lg:w-[500px] lg:h-[350px] xl:w-[600px] xl:h-[420px]">
-                    <Image src={item.img} alt={item.title} fill />
+                  <div className="relative w-80 h-48 md:w-96 md:h-64 lg:w-[45vw] lg:h-[40vh] xl:w-[45vw] xl:h-[40vh] 2xl:w-[50vw] 2xl:h-[50vh] max-h-[40vh] lg:max-h-[50vh]">
+                    <Image
+                      src={item.img}
+                      alt={item.title}
+                      fill
+                      className="object-contain"
+                    />
                   </div>
-                  <p className="w-80 md:w-96 lg:w-[500px] xl:w-[600px] lg:text-lg">
+                  <p className="w-80 md:w-96 lg:w-[45vw] xl:w-[45vw] 2xl:w-[50vw] lg:text-lg 2xl:text-xl text-center">
                     {item.desc}
                   </p>
                 </div>
@@ -227,8 +241,10 @@ const PortfolioPage = () => {
           </motion.div>
         </div>
       </div>
-      <div className="h-screen w-screen flex flex-col gap-16 justify-center items-center">
-        <h1 className=" text-5xl md:text-6xl text-center">See My Resume</h1>
+      <div className="h-screen w-screen flex flex-col  justify-center items-center">
+        <h1 className="  text-center text-4xl">
+          See My Resume
+        </h1>
         <div className="relative">
           <motion.svg
             animate={{ rotate: 360 }}
@@ -239,7 +255,7 @@ const PortfolioPage = () => {
               repeatType: "loop",
             }}
             viewBox="0 0 300 300"
-            className="w-[500px] [500px]"
+            className="w-[300px] h-[300px] "
           >
             <defs>
               <path
@@ -256,12 +272,12 @@ const PortfolioPage = () => {
           <a
             href="/derick_mern_resume.pdf"
             download
-            className="w-32 h-32 absolute top-0 left-0 right-0 bottom-0 m-auto bg-black text-white rounded-full flex items-center justify-center gap-2 p-2"
+            className="w-24 h-24 absolute text-sm top-0 left-0 right-0 bottom-0 m-auto bg-black text-white rounded-full flex flex-col items-center justify-center gap-2 p-2"
           >
             Download
             <svg
-              width="100px"
-              height="100px"
+              width="200px"
+              height="20px"
               viewBox="0 0 24 24"
               fill=""
               xmlns="http://www.w3.org/2000/svg"

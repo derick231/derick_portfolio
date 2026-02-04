@@ -5,8 +5,8 @@ import TranstitionProvider from "@/components/TranstitionProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Derick's Portfolio",
-  description: "My Portfolio",
+  title: "Derick Subedi",
+  description: "Full-stack developer crafting real-world products",
 };
 
 export default function RootLayout({ children }) {
