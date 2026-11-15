@@ -1,18 +1,15 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import TranstitionProvider from "@/components/TranstitionProvider";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata = {
-  title: "Derick Subedi",
-  description: "Full-stack developer crafting real-world products",
+  title: "Derick Subedi — Creative Developer & MERN Specialist",
+  description: "Senior Creative Frontend Developer & MERN Stack Specialist crafting immersive digital experiences.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className="dark">
+      <body className="bg-[#08080a] text-[#f4f4f5] antialiased selection:bg-white selection:text-black">
         <TranstitionProvider>{children}</TranstitionProvider>
       </body>
     </html>

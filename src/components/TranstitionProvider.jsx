@@ -1,69 +1,33 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { usePathname } from "next/navigation";
-import { useRef } from "react";
 import Navbar from "./Navbar";
-import { ScrollContext } from "./ScrollContext";
+import Footer from "./Footer";
+import SmoothScroll from "./SmoothScroll";
+import CustomCursor from "./CustomCursor";
+import Preloader from "./Preloader";
 
-const TransitionProvider = ({ children }) => {
-  const pathname = usePathname();
-
-  const ref = useRef(null);
-
+export default function TransitionProvider({ children }) {
   return (
-    <AnimatePresence mode="wait">
-      <div
-        key={pathname}
-        ref={ref}
-        className="w-screen h-screen bg-gradient-to-b from-blue-100 to-red-50 overflow-scroll"
-      >
-        <ScrollContext.Provider value={ref}>
-          {/* Top curtain */}
-          <motion.div
-            initial={{ height: "140vh" }}
-            animate={{ height: "0vh" }}
-            exit={{ height: "140vh" }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-            className=" fixed top-0 left-0 w-screen bg-black z-40"
-          />
+    <SmoothScroll>
+      <div className="relative min-h-screen bg-[#070709] text-[#f4f4f5] selection:bg-white selection:text-black">
+        {/* Fullscreen Cinematic Preloader */}
+        <Preloader />
 
-          {/* Page name */}
-          <motion.div
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="fixed top-0 pointer-events-none cursor-default left-0 bottom-0 right-0 m-auto w-fit h-fit text-white text-6xl z-50"
-          >
-            {pathname === "/" ? "home" : pathname.substring(1)}
-          </motion.div>
+        {/* Subtle noise and ambient grain */}
+        <div className="pointer-events-none fixed inset-0 z-0 bg-noise opacity-40" />
 
-          {/* Bottom curtain */}
-          <motion.div
-            initial={{ height: "140vh" }}
-            animate={{ height: "0vh" }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="fixed bottom-0 left-0 w-screen bg-black z-30"
-          />
+        {/* Custom interactive cursor */}
+        <CustomCursor />
 
-          {/* Layout */}
-          <div className=" h-24">
-            <Navbar />
-          </div>
+        {/* Global Navigation */}
+        <Navbar />
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="h-[calc(100vh-6rem)] "
-          >
-            {children}
-          </motion.div>
-        </ScrollContext.Provider>
+        {/* Main Content Area */}
+        <main className="relative z-10">{children}</main>
+
+        {/* Global Footer */}
+        <Footer />
       </div>
-    </AnimatePresence>
+    </SmoothScroll>
   );
-};
-
-export default TransitionProvider;
+}
