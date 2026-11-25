@@ -79,7 +79,7 @@ export default function Preloader({ onComplete }) {
           duration: 0.2,
           onComplete: () => {
             if (statusRef.current) {
-              statusRef.current.innerText = "DIGITAL EXPERIENCE READY";
+              statusRef.current.innerText = "PORTFOLIO READY";
             }
           },
         },
@@ -125,11 +125,11 @@ export default function Preloader({ onComplete }) {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-50 flex flex-col justify-between bg-[#070709] text-white p-8 sm:p-14 select-none pointer-events-auto"
+      className="fixed inset-0 z-50 flex flex-col justify-between bg-[#050508] text-white p-8 sm:p-14 select-none pointer-events-auto"
       style={{ willChange: "transform" }}
     >
       {/* Top Header */}
-      <div className="flex items-center justify-between text-xs font-mono text-zinc-500 uppercase tracking-widest">
+      <div className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.08em] text-white/50">
         <span>CREATIVE DEVELOPER</span>
         <span>KATHMANDU, NEPAL</span>
       </div>
@@ -138,31 +138,31 @@ export default function Preloader({ onComplete }) {
       <div className="flex flex-col items-center justify-center my-auto">
         <div ref={brandRef} className="text-center">
           <div className="flex items-center justify-center gap-2">
-            <span className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter uppercase text-white">
+            <span className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-[-0.03em] uppercase text-white">
               DERICK
             </span>
-            <span className="text-sm font-mono px-2 py-0.5 rounded border border-white/20 text-white/70">
+            <span className="text-xs font-mono px-2 py-0.5 rounded border border-white/20 text-[var(--accent)] font-semibold">
               ®
             </span>
           </div>
-          <p className="text-xs font-mono tracking-widest uppercase text-zinc-400 mt-3">
-            MERN Stack &amp; Creative Engineering
+          <p className="text-[11px] uppercase tracking-[0.08em] font-semibold text-white/60 mt-3">
+            Full-Stack MERN Developer
           </p>
         </div>
 
         {/* Counter Number */}
         <div ref={counterRef} className="mt-8">
-          <span className="text-6xl sm:text-8xl md:text-9xl font-black font-mono tracking-tighter text-white tabular-nums">
+          <span className="text-6xl sm:text-8xl md:text-9xl font-extrabold tracking-[-0.03em] text-white tabular-nums">
             {counter < 10 ? `00${counter}` : counter < 100 ? `0${counter}` : counter}
           </span>
-          <span className="text-xl sm:text-2xl font-mono text-sky-400 ml-1">%</span>
+          <span className="text-xl sm:text-2xl font-mono text-[var(--accent)] ml-1">%</span>
         </div>
 
         <p
           ref={statusRef}
-          className="text-xs font-mono uppercase tracking-widest text-zinc-500 mt-4 transition-opacity"
+          className="text-[11px] uppercase tracking-[0.08em] font-semibold text-white/50 mt-4 transition-opacity"
         >
-          INITIALIZING EXPERIENCES...
+          LOADING...
         </p>
       </div>
 
@@ -171,7 +171,7 @@ export default function Preloader({ onComplete }) {
         <div className="w-full h-1 bg-white/[0.08] rounded-full overflow-hidden">
           <div
             ref={progressBarRef}
-            className="w-full h-full bg-gradient-to-r from-sky-400 via-indigo-400 to-white origin-left"
+            className="w-full h-full bg-[var(--accent)] origin-left"
             style={{ transform: "scaleX(0)" }}
           />
         </div>

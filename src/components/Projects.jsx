@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ExternalLink } from "lucide-react";
 import { GithubIcon } from "./Icons";
-import Image from "next/image";
 
 const projects = [
   {
@@ -19,7 +18,6 @@ const projects = [
     github: "https://github.com/derick231",
     demo: null,
     highlight: "Internship Showcase Project",
-    image: "https://images.pexels.com/photos/877971/pexels-photo-877971.jpeg",
   },
   {
     id: "task-management",
@@ -27,12 +25,11 @@ const projects = [
     title: "Task Management System",
     category: "Full-Stack Web Application",
     description:
-      "An intuitive productivity application engineered with the MERN stack. Enables seamless task creation, real-time status transitions, category filtration, deadline tracking, and interactive Kanban-style board organization.",
+      "An intuitive productivity application engineered with the MERN stack. Enables task creation, status transitions, category filtering, deadline tracking, and Kanban-style board organization.",
     tags: ["React.js", "Node.js", "Express.js", "MongoDB", "REST APIs", "State Management"],
     github: "https://github.com/derick231",
     demo: "https://dericksubedi.com.np",
     highlight: "Interactive Productivity Tool",
-    image: "https://images.pexels.com/photos/6804091/pexels-photo-6804091.jpeg",
   },
   {
     id: "blog-application",
@@ -45,7 +42,6 @@ const projects = [
     github: "https://github.com/derick231",
     demo: null,
     highlight: "Editorial Publishing Platform",
-    image: "https://images.pexels.com/photos/29502370/pexels-photo-29502370.jpeg",
   },
   {
     id: "bookstore-ecommerce",
@@ -53,14 +49,331 @@ const projects = [
     title: "Modern Bookstore & eCommerce",
     category: "E-Commerce System",
     description:
-      "A fully featured digital bookstore web application with dynamic catalog search, categorized collections, interactive shopping cart management, and seamless order submission flows.",
+      "A fully featured digital bookstore web application with dynamic catalog search, categorized collections, interactive shopping cart management, and order submission flows.",
     tags: ["React.js", "Node.js", "MongoDB", "Express.js", "Responsive Design"],
     github: "https://github.com/derick231",
     demo: null,
     highlight: "Digital Retail Platform",
-    image: "https://images.pexels.com/photos/265685/pexels-photo-265685.jpeg",
   },
 ];
+
+function ProjectGraphic({ id }) {
+  if (id === "smart-school") {
+    return (
+      <div className="w-full h-full p-5 sm:p-7 flex flex-col justify-between font-sans select-none">
+        {/* Mock Window Top bar */}
+        <div className="flex items-center justify-between pb-3.5 border-b border-white/[0.08]">
+          <div className="flex items-center gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-rose-500/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
+            <span className="ml-2 text-xs text-zinc-400 font-medium">
+              School Management Portal
+            </span>
+          </div>
+          <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 font-medium">
+            Administrative Portal
+          </span>
+        </div>
+
+        {/* Dashboard Content Mock */}
+        <div className="my-auto py-4 flex flex-col gap-3">
+          {/* Quick Metrics Bar */}
+          <div className="grid grid-cols-3 gap-2">
+            <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+              <p className="text-[10px] text-zinc-400 uppercase tracking-wider font-mono">Teachers</p>
+              <p className="text-sm sm:text-base font-bold text-white mt-0.5">48 Active</p>
+            </div>
+            <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+              <p className="text-[10px] text-zinc-400 uppercase tracking-wider font-mono">Exams</p>
+              <p className="text-sm sm:text-base font-bold text-sky-400 mt-0.5">12 Scheduled</p>
+            </div>
+            <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+              <p className="text-[10px] text-zinc-400 uppercase tracking-wider font-mono">Security</p>
+              <p className="text-sm sm:text-base font-bold text-emerald-400 mt-0.5">Verified</p>
+            </div>
+          </div>
+
+          {/* Teacher Directory */}
+          <div className="p-3.5 rounded-xl bg-[#0e0e16] border border-white/[0.06] flex flex-col gap-2">
+            <div className="flex items-center justify-between text-xs text-zinc-400 pb-2 border-b border-white/[0.04]">
+              <span className="font-semibold text-zinc-300">Staff &amp; Faculty Directory</span>
+              <span className="text-emerald-400 font-mono text-[11px]">● Active Term</span>
+            </div>
+            <div className="space-y-1.5 text-xs text-zinc-300">
+              <div className="flex items-center justify-between p-2 rounded-lg bg-white/[0.02]">
+                <span className="text-white font-medium">Dr. R. Sharma</span>
+                <span className="text-zinc-400">Department Head (Mathematics)</span>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">Assigned</span>
+              </div>
+              <div className="flex items-center justify-between p-2 rounded-lg bg-white/[0.02]">
+                <span className="text-white font-medium">Sunita Shrestha</span>
+                <span className="text-zinc-400">Senior Faculty (Computer Science)</span>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">Assigned</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Examination Workflow */}
+          <div className="p-3.5 rounded-xl bg-[#0e0e16] border border-white/[0.06] flex items-center justify-between">
+            <div>
+              <p className="text-xs font-semibold text-white">Term Examination Module</p>
+              <p className="text-xs text-zinc-400 mt-0.5">Student grading, score allocation &amp; reports</p>
+            </div>
+            <span className="text-xs font-medium text-sky-400 px-2.5 py-1 rounded-full bg-sky-500/10 border border-sky-500/20">
+              Grading In Progress
+            </span>
+          </div>
+        </div>
+
+        {/* Footer Status */}
+        <div className="pt-2 border-t border-white/[0.06] flex items-center justify-between text-xs text-zinc-400">
+          <span>School Administration Platform</span>
+          <span className="text-emerald-400 font-medium">System Online</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (id === "task-management") {
+    return (
+      <div className="w-full h-full p-5 sm:p-7 flex flex-col justify-between font-sans select-none">
+        {/* Mock Window Top bar */}
+        <div className="flex items-center justify-between pb-3.5 border-b border-white/[0.08]">
+          <div className="flex items-center gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-rose-500/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
+            <span className="ml-2 text-xs text-zinc-400 font-medium">
+              Project Task Board
+            </span>
+          </div>
+          <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">
+            Kanban Board
+          </span>
+        </div>
+
+        {/* Kanban Board Columns Mock */}
+        <div className="my-auto py-4 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          {/* Column 1: TO DO */}
+          <div className="p-3 rounded-xl bg-[#0e0e16] border border-white/[0.06] flex flex-col gap-2">
+            <div className="flex items-center justify-between text-xs pb-1.5 border-b border-white/[0.04]">
+              <span className="text-zinc-300 font-semibold">To Do</span>
+              <span className="text-[10px] text-zinc-500 font-mono">2</span>
+            </div>
+            <div className="p-2.5 rounded-lg bg-white/[0.03] border border-white/[0.05] text-xs">
+              <p className="text-zinc-200 font-medium">User Login &amp; Security</p>
+              <div className="flex items-center justify-between mt-2 text-[10px]">
+                <span className="text-amber-400">High Priority</span>
+                <span className="text-zinc-500">Feature</span>
+              </div>
+            </div>
+            <div className="p-2.5 rounded-lg bg-white/[0.03] border border-white/[0.05] text-xs">
+              <p className="text-zinc-200 font-medium">Database Optimization</p>
+              <div className="flex items-center justify-between mt-2 text-[10px]">
+                <span className="text-sky-400">Medium</span>
+                <span className="text-zinc-500">Database</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Column 2: IN PROGRESS */}
+          <div className="p-3 rounded-xl bg-[#0e0e16] border border-white/[0.06] flex flex-col gap-2">
+            <div className="flex items-center justify-between text-xs pb-1.5 border-b border-white/[0.04]">
+              <span className="text-sky-400 font-semibold">In Progress</span>
+              <span className="text-[10px] text-sky-400 font-mono">1</span>
+            </div>
+            <div className="p-2.5 rounded-lg bg-sky-500/[0.06] border border-sky-500/20 text-xs">
+              <p className="text-white font-medium">Interactive Dashboard</p>
+              <div className="w-full bg-white/10 h-1.5 rounded-full mt-2 overflow-hidden">
+                <div className="bg-sky-400 h-full w-3/4 rounded-full" />
+              </div>
+              <div className="flex items-center justify-between mt-2 text-[10px]">
+                <span className="text-sky-300">75% completed</span>
+                <span className="text-zinc-400">Frontend</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Column 3: COMPLETED */}
+          <div className="p-3 rounded-xl bg-[#0e0e16] border border-white/[0.06] flex flex-col gap-2">
+            <div className="flex items-center justify-between text-xs pb-1.5 border-b border-white/[0.04]">
+              <span className="text-emerald-400 font-semibold">Completed</span>
+              <span className="text-[10px] text-emerald-400 font-mono">2</span>
+            </div>
+            <div className="p-2.5 rounded-lg bg-white/[0.02] border border-white/[0.04] text-xs opacity-90">
+              <p className="text-zinc-300">Mobile Responsive Design</p>
+              <span className="inline-block mt-1 text-[10px] text-emerald-400 font-medium">✓ Completed</span>
+            </div>
+            <div className="p-2.5 rounded-lg bg-white/[0.02] border border-white/[0.04] text-xs opacity-90">
+              <p className="text-zinc-300">Email Notifications</p>
+              <span className="inline-block mt-1 text-[10px] text-emerald-400 font-medium">✓ Completed</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer Status */}
+        <div className="pt-2 border-t border-white/[0.06] flex items-center justify-between text-xs text-zinc-400">
+          <span>Team Workspace Organizer</span>
+          <span className="text-emerald-400 font-medium">Real-time Updates</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (id === "blog-application") {
+    return (
+      <div className="w-full h-full p-5 sm:p-7 flex flex-col justify-between font-sans select-none">
+        {/* Mock Window Top bar */}
+        <div className="flex items-center justify-between pb-3.5 border-b border-white/[0.08]">
+          <div className="flex items-center gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-rose-500/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
+            <span className="ml-2 text-xs text-zinc-400 font-medium">
+              Publishing Platform
+            </span>
+          </div>
+          <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20 font-medium">
+            Article Editor
+          </span>
+        </div>
+
+        {/* Editor Mock */}
+        <div className="my-auto py-4 flex flex-col gap-3">
+          {/* Formatting Toolbar */}
+          <div className="flex items-center gap-2 p-2 rounded-lg bg-white/[0.03] border border-white/[0.06] text-xs text-zinc-400">
+            <span className="px-2 py-0.5 rounded bg-white/10 text-white font-bold">Bold</span>
+            <span className="px-2 py-0.5 rounded hover:bg-white/5 italic">Italic</span>
+            <span className="px-2 py-0.5 rounded hover:bg-white/5">Quote</span>
+            <span className="px-2 py-0.5 rounded hover:bg-white/5">Heading</span>
+            <span className="ml-auto text-[11px] text-zinc-400">Draft Auto-Saved</span>
+          </div>
+
+          {/* Article Preview Card - No code syntax, clean readable preview */}
+          <div className="p-4 rounded-xl bg-[#0e0e16] border border-white/[0.06] flex flex-col gap-2.5">
+            <div className="flex items-center gap-2 text-xs text-zinc-400">
+              <span className="text-sky-400 font-medium">Web Engineering</span>
+              <span>•</span>
+              <span>5 min read</span>
+              <span>•</span>
+              <span>By Derick Subedi</span>
+            </div>
+            <h4 className="text-sm sm:text-base font-bold text-white tracking-tight">
+              Building Modern Web Applications with Scalable Architecture
+            </h4>
+            <p className="text-xs text-zinc-300 leading-relaxed p-3 rounded-lg bg-[#08080c] border border-white/[0.04]">
+              A comprehensive guide exploring clean backend architecture, responsive user interface design, and secure data storage for modern web platforms.
+            </p>
+          </div>
+
+          {/* Reader Engagement Metrics */}
+          <div className="grid grid-cols-3 gap-2 text-center text-xs">
+            <div className="p-2 rounded-lg bg-white/[0.02] border border-white/[0.04]">
+              <span className="text-zinc-500 block text-[10px] uppercase font-mono">Views</span>
+              <span className="text-white font-bold">1,840</span>
+            </div>
+            <div className="p-2 rounded-lg bg-white/[0.02] border border-white/[0.04]">
+              <span className="text-zinc-500 block text-[10px] uppercase font-mono">Comments</span>
+              <span className="text-sky-400 font-bold">42</span>
+            </div>
+            <div className="p-2 rounded-lg bg-white/[0.02] border border-white/[0.04]">
+              <span className="text-zinc-500 block text-[10px] uppercase font-mono">Status</span>
+              <span className="text-emerald-400 font-bold">Published</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer Status */}
+        <div className="pt-2 border-t border-white/[0.06] flex items-center justify-between text-xs text-zinc-400">
+          <span>Content Publishing &amp; Community</span>
+          <span className="text-sky-400 font-medium">Reader Friendly</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (id === "bookstore-ecommerce") {
+    return (
+      <div className="w-full h-full p-5 sm:p-7 flex flex-col justify-between font-sans select-none">
+        {/* Mock Window Top bar */}
+        <div className="flex items-center justify-between pb-3.5 border-b border-white/[0.08]">
+          <div className="flex items-center gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-rose-500/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
+            <span className="ml-2 text-xs text-zinc-400 font-medium">
+              Online Bookstore Storefront
+            </span>
+          </div>
+          <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">
+            Digital Store
+          </span>
+        </div>
+
+        {/* Storefront Mock */}
+        <div className="my-auto py-4 flex flex-col gap-3">
+          {/* Catalog & Cart Split Preview */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            {/* Book Item 1 */}
+            <div className="p-3.5 rounded-xl bg-[#0e0e16] border border-white/[0.06] flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-medium text-sky-400 bg-sky-500/10 px-2 py-0.5 rounded-full">
+                  Architecture
+                </span>
+                <p className="text-xs font-semibold text-white mt-2">
+                  Clean Architecture in Practice
+                </p>
+                <p className="text-xs text-zinc-400 mt-1 font-medium">$28.00</p>
+              </div>
+              <div className="mt-3 flex items-center justify-between text-xs">
+                <span className="text-emerald-400">★ 4.9 (128 reviews)</span>
+                <span className="px-2 py-0.5 rounded bg-white/10 text-white text-[11px]">In Cart</span>
+              </div>
+            </div>
+
+            {/* Book Item 2 */}
+            <div className="p-3.5 rounded-xl bg-[#0e0e16] border border-white/[0.06] flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-medium text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full">
+                  Web Development
+                </span>
+                <p className="text-xs font-semibold text-white mt-2">
+                  Modern React Design Patterns
+                </p>
+                <p className="text-xs text-zinc-400 mt-1 font-medium">$34.50</p>
+              </div>
+              <div className="mt-3 flex items-center justify-between text-xs">
+                <span className="text-emerald-400">★ 4.8 (94 reviews)</span>
+                <span className="px-2 py-0.5 rounded bg-white/10 text-white text-[11px]">In Cart</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Cart & Checkout Summary */}
+          <div className="p-3.5 rounded-xl bg-[#0e0e16] border border-white/[0.06] flex flex-col gap-2">
+            <div className="flex items-center justify-between text-xs pb-2 border-b border-white/[0.04]">
+              <span className="text-zinc-300 font-medium">Cart Total (2 Books)</span>
+              <span className="text-white font-bold text-sm">$62.50</span>
+            </div>
+            <div className="flex items-center justify-between text-xs text-zinc-400">
+              <span>Checkout Flow</span>
+              <span className="text-emerald-400 font-medium">1. Cart → 2. Shipping → 3. Done</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer Status */}
+        <div className="pt-2 border-t border-white/[0.06] flex items-center justify-between text-xs text-zinc-400">
+          <span>Shopping Cart &amp; Order Checkout</span>
+          <span className="text-emerald-400 font-medium">Instant Delivery</span>
+        </div>
+      </div>
+    );
+  }
+
+  return null;
+}
 
 export default function Projects() {
   const sectionRef = useRef(null);
@@ -169,28 +482,28 @@ export default function Projects() {
     <section
       id="projects"
       ref={sectionRef}
-      className="relative w-full bg-[#070709] border-t border-white/[0.06] z-10"
+      className="relative w-full bg-transparent border-t border-[var(--border)] z-10"
     >
       <div className="py-28 md:py-36 px-6 sm:px-8 md:px-12 max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-xs font-mono uppercase tracking-widest text-sky-400">
-                02 // Selected Projects
+              <span className="w-6 h-0.5 bg-[var(--accent)] shrink-0" />
+              <span className="text-[11px] uppercase font-semibold tracking-[0.08em] text-[var(--accent)]">
+                Selected Work
               </span>
-              <div className="h-px w-16 bg-sky-400/40" />
             </div>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tighter uppercase text-white leading-none perspective-1000">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-medium tracking-[-0.02em] uppercase text-[var(--text)] leading-none perspective-1000">
               <span className="inline-block overflow-hidden py-1">
                 <span className="project-word inline-block mr-3">Featured</span>
-                <span className="project-word inline-block text-metallic">Projects.</span>
+                <span className="project-word inline-block text-[var(--accent)]">Projects.</span>
               </span>
             </h2>
           </div>
 
-          <p className="text-sm font-mono text-zinc-400 max-w-xs">
-            A curated selection of production MERN applications, enterprise systems, and interactive digital products.
+          <p className="text-sm font-normal text-[var(--text-muted)] max-w-xs">
+            Selected full-stack web applications built with React, Node.js, Express, MongoDB, and Tailwind CSS.
           </p>
         </div>
 
@@ -202,54 +515,48 @@ export default function Projects() {
               data-cursor-text="VIEW"
               onMouseMove={handleCardMove}
               onMouseLeave={handleCardLeave}
-              className="project-showcase-card group rounded-3xl bg-[#0c0c12] border border-white/[0.08] hover:border-white/20 transition-colors duration-300 overflow-hidden shadow-2xl will-change-transform"
+              className="project-showcase-card group rounded-3xl bg-[var(--surface)]/80 backdrop-blur-md border border-[var(--border)] hover:border-[var(--accent)]/40 transition-colors duration-300 overflow-hidden shadow-2xl will-change-transform"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
-                {/* Visual Image Preview Column (7 Cols on desktop) */}
+                {/* Creative Software Interface Graphic Preview (7 Cols on desktop) */}
                 <div
-                  className={`relative aspect-[16/10] lg:aspect-auto lg:min-h-[420px] lg:col-span-7 overflow-hidden bg-[#08080c] ${
-                    index % 2 === 1 ? "lg:order-2" : "lg:order-1"
+                  className={`relative min-h-[360px] sm:min-h-[400px] lg:min-h-[440px] lg:col-span-7 overflow-hidden bg-[#07070D]/90 flex items-stretch border-b lg:border-b-0 border-[var(--border)] ${
+                    index % 2 === 1
+                      ? "lg:order-2 lg:border-l lg:border-[var(--border)]"
+                      : "lg:order-1 lg:border-r lg:border-[var(--border)]"
                   }`}
                 >
-                  <div className="project-img-inner absolute inset-0 will-change-transform">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 60vw"
-                      className="object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
-                    />
+                  <div className="project-img-inner w-full h-full flex flex-col will-change-transform group-hover:scale-[1.01] transition-transform duration-500">
+                    <ProjectGraphic id={project.id} />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c12] via-transparent to-transparent lg:hidden" />
                 </div>
 
                 {/* Content Details Column (5 Cols on desktop) */}
                 <div
-                  className={`p-8 sm:p-10 lg:p-12 lg:col-span-5 flex flex-col justify-between ${
-                    index % 2 === 1 ? "lg:order-1" : "lg:order-2"
-                  }`}
+                  className={`p-8 sm:p-10 lg:p-12 lg:col-span-5 flex flex-col justify-between ${index % 2 === 1 ? "lg:order-1" : "lg:order-2"
+                    }`}
                 >
                   <div>
                     {/* Top category & index indicator */}
-                    <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/[0.06]">
+                    <div className="flex items-center justify-between mb-4 pb-3 border-b border-[var(--border)]">
                       <div className="flex items-center gap-2.5">
-                        <span className="text-xs font-mono font-bold text-sky-400">
+                        <span className="text-xs font-mono font-bold text-[var(--accent)]">
                           {project.number}
                         </span>
-                        <span className="text-xs font-mono uppercase tracking-widest text-zinc-400">
+                        <span className="text-[11px] uppercase font-semibold tracking-[0.08em] text-[var(--text-muted)]">
                           {project.category}
                         </span>
                       </div>
-                      <span className="text-[11px] font-mono text-zinc-500 uppercase">
+                      <span className="text-[11px] uppercase font-semibold tracking-[0.08em] text-[var(--text-muted)]">
                         {project.highlight}
                       </span>
                     </div>
 
-                    <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-4">
+                    <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[var(--text)] mb-4">
                       {project.title}
                     </h3>
 
-                    <p className="text-sm text-zinc-400 leading-relaxed font-normal mb-8">
+                    <p className="text-sm text-[var(--text-muted)] leading-relaxed font-normal mb-8">
                       {project.description}
                     </p>
 
@@ -258,7 +565,7 @@ export default function Projects() {
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-3 py-1 rounded-full text-xs font-mono bg-white/[0.03] border border-white/[0.08] text-zinc-300"
+                          className="px-3 py-1 rounded-full text-xs font-mono bg-white/[0.04] border border-[var(--border)] text-zinc-300"
                         >
                           {tag}
                         </span>
@@ -267,14 +574,14 @@ export default function Projects() {
                   </div>
 
                   {/* Links & CTA Actions */}
-                  <div className="flex items-center gap-3 pt-6 border-t border-white/[0.06]">
+                  <div className="flex items-center gap-3 pt-6 border-t border-[var(--border)]">
                     {project.demo && (
                       <a
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
                         data-magnetic="true"
-                        className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-black text-xs uppercase tracking-widest font-semibold hover:bg-zinc-200 transition-colors shadow-lg shadow-white/10"
+                        className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[var(--accent)] text-white text-xs uppercase tracking-[0.08em] font-medium hover:bg-[var(--accent-dark)] transition-colors shadow-md shadow-[var(--accent)]/20"
                       >
                         <span>Live Demo</span>
                         <ExternalLink className="w-3.5 h-3.5" />
@@ -286,7 +593,7 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       data-magnetic="true"
-                      className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-white/20 text-white text-xs uppercase tracking-widest font-semibold hover:bg-white/10 hover:border-white/40 transition-colors"
+                      className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-transparent border border-[var(--border)] text-white text-xs uppercase tracking-[0.08em] font-medium hover:bg-white/10 transition-colors"
                     >
                       <GithubIcon className="w-3.5 h-3.5" />
                       <span>Source Code</span>
@@ -297,16 +604,13 @@ export default function Projects() {
             </div>
           ))}
 
-          {/* GitHub Repositories Banner */}
-          <div className="p-8 sm:p-10 rounded-3xl bg-[#0c0c12]/80 border border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          {/* GitHub Repositories Banner (Dark Cosmic Section) */}
+          <div className="p-8 sm:p-10 rounded-3xl bg-[var(--dark)]/90 backdrop-blur-md border border-[var(--border)] flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-2xl">
             <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-sky-400 block mb-1">
-                More Open Source
-              </span>
-              <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
-                Explore More Projects &amp; Experiments
+              <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-white">
+                Explore More Projects &amp; Repositories
               </h3>
-              <p className="text-xs sm:text-sm text-zinc-400 mt-1 max-w-lg">
+              <p className="text-xs sm:text-sm text-zinc-400 mt-1 max-w-lg font-normal">
                 View utilities, backend architectures, full repositories, and code samples on GitHub.
               </p>
             </div>
@@ -316,7 +620,7 @@ export default function Projects() {
               target="_blank"
               rel="noopener noreferrer"
               data-magnetic="true"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black text-xs uppercase tracking-widest font-semibold hover:bg-zinc-200 transition-colors shrink-0"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--accent)] text-white text-xs uppercase tracking-[0.08em] font-medium hover:bg-[var(--accent-dark)] transition-colors shrink-0 shadow-md shadow-[var(--accent)]/20"
             >
               <GithubIcon className="w-4 h-4" />
               <span>Visit GitHub Profile</span>

@@ -4,16 +4,14 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLenis } from "./SmoothScroll";
-import HeroCanvas from "./HeroCanvas";
-import { ArrowDown, ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 
 export default function Hero() {
   const containerRef = useRef(null);
   const headlineRef = useRef(null);
   const subtextRef = useRef(null);
   const ctaRef = useRef(null);
-  const badgeRef = useRef(null);
-  const visualRef = useRef(null);
+  const metaRef = useRef(null);
   const scrollIndicatorRef = useRef(null);
   const lenis = useLenis();
 
@@ -35,10 +33,10 @@ export default function Hero() {
           defaults: { ease: "power3.out" },
         });
 
-        // 1. Availability badge fade & slide down
+        // 1. Meta line fade & slide down
         tl.fromTo(
-          badgeRef.current,
-          { y: -25, opacity: 0 },
+          metaRef.current,
+          { y: -20, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.7, delay: 0.1 }
         )
           // 2. Kinetic word & line reveals with 3D rotation & mask
@@ -73,14 +71,7 @@ export default function Hero() {
             { y: 0, opacity: 1, scale: 1, stagger: 0.1, duration: 0.7 },
             "-=0.6"
           )
-          // 5. 3D Canvas visual entrance
-          .fromTo(
-            visualRef.current,
-            { scale: 0.8, opacity: 0, rotateY: 15 },
-            { scale: 1, opacity: 1, rotateY: 0, duration: 1.4, ease: "power3.out" },
-            "-=1.1"
-          )
-          // 6. Bottom metadata line
+          // 5. Bottom metadata line
           .fromTo(
             scrollIndicatorRef.current,
             { opacity: 0, y: -15 },
@@ -88,7 +79,7 @@ export default function Hero() {
             "-=0.5"
           );
 
-        // 7. Scroll-based exit parallax
+        // Scroll-based exit parallax
         gsap.to(headlineRef.current, {
           scrollTrigger: {
             trigger: containerRef.current,
@@ -98,19 +89,6 @@ export default function Hero() {
           },
           y: 140,
           opacity: 0.15,
-          ease: "none",
-        });
-
-        gsap.to(visualRef.current, {
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
-          y: 80,
-          scale: 0.88,
-          opacity: 0.1,
           ease: "none",
         });
 
@@ -216,53 +194,41 @@ export default function Hero() {
       ref={containerRef}
       className="relative min-h-screen flex flex-col justify-between pt-32 pb-12 px-6 sm:px-8 md:px-12 max-w-7xl mx-auto overflow-hidden"
     >
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-500/5 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-1/3 right-10 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none -z-10" />
-
       {/* Hero Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center my-auto">
-        {/* Left Typography Column (7 Cols) */}
-        <div className="lg:col-span-7 flex flex-col items-start z-10">
-          {/* Availability & Location Indicator */}
+        {/* Main Typography Column (8 Cols) */}
+        <div className="lg:col-span-8 flex flex-col items-start z-10">
+          {/* Factual location and role with 24px orange line */}
           <div
-            ref={badgeRef}
-            className="flex flex-wrap items-center gap-3 mb-6"
+            ref={metaRef}
+            className="flex items-center gap-2.5 mb-6"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-              </span>
-              <span className="text-xs font-mono uppercase tracking-wider text-zinc-300">
-                Available for new opportunities
-              </span>
-            </div>
-
-            <span className="text-xs font-mono text-zinc-500 hidden sm:inline">
-              Nepal • Kathmandu (NPT)
+            <span className="w-6 h-0.5 bg-[var(--accent)] shrink-0" />
+            <span className="text-[11px] uppercase tracking-[0.08em] font-semibold text-[var(--accent)]">
+              Kathmandu, Nepal • Available for Opportunities
             </span>
           </div>
 
           {/* Large Animated Typography Headline with Kinetic Letter Masks */}
           <div ref={headlineRef} className="mb-6 perspective-1000">
-            <h1 className="text-4xl sm:text-6xl md:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.95] uppercase text-white flex flex-col">
-              {renderKineticText("BUILDING", "text-white")}
-              {renderKineticText("DIGITAL", "text-metallic")}
-              {renderKineticText("EXPERIENCES", "text-white/95")}
-              {renderKineticText("THAT MATTER.", "text-zinc-400 font-light")}
+            <h1 className="text-4xl sm:text-6xl md:text-7xl xl:text-8xl font-extrabold tracking-[-0.03em] leading-[0.9] uppercase text-white flex flex-col gap-1 sm:gap-2">
+              <div className="flex flex-wrap items-baseline gap-x-3 sm:gap-x-4">
+                {renderKineticText("DERICK", "text-white")}
+                {renderKineticText("SUBEDI", "text-white")}
+              </div>
+              <div className="flex flex-wrap items-baseline gap-x-3 sm:gap-x-4">
+                {renderKineticText("MERN", "text-white")}
+                {renderKineticText("DEVELOPER", "text-[var(--accent)]")}
+              </div>
             </h1>
           </div>
 
-          {/* Supporting Text */}
+          {/* Supporting Text - Concrete & Factual */}
           <p
             ref={subtextRef}
-            className="text-base sm:text-lg md:text-xl text-zinc-400 font-normal max-w-xl mb-10 leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-[var(--text-muted)] font-normal max-w-2xl mb-10 leading-relaxed"
           >
-            I&apos;m <span className="text-white font-medium">Derick Subedi</span>,
-            a MERN Stack Developer &amp; Creative Web Specialist passionate about building
-            modern, interactive, and scalable digital experiences that unite robust engineering
-            with refined visual design.
+            Full-stack developer based in Kathmandu, Nepal. I build web applications using React, Node.js, Express, MongoDB, and PostgreSQL, focusing on reliable backend systems and clean, responsive user interfaces.
           </p>
 
           {/* Action CTAs with Magnetic Attributes */}
@@ -275,9 +241,9 @@ export default function Hero() {
               onClick={scrollToProjects}
               data-magnetic="true"
               data-cursor-text="EXPLORE"
-              className="group relative inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white text-black font-semibold text-sm tracking-wide hover:bg-zinc-200 transition-all duration-300 shadow-xl shadow-white/10"
+              className="group relative inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[var(--accent)] text-white font-medium text-sm tracking-wide hover:bg-[var(--accent-dark)] transition-all duration-300 shadow-lg shadow-[var(--accent)]/25"
             >
-              <span>View My Work</span>
+              <span>View Projects</span>
               <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
 
@@ -286,41 +252,42 @@ export default function Hero() {
               onClick={scrollToContact}
               data-magnetic="true"
               data-cursor-text="TALK"
-              className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/20 text-white font-medium text-sm tracking-wide hover:bg-white/10 hover:border-white/40 transition-all duration-300 backdrop-blur-sm"
+              className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-transparent border border-white/20 text-white font-medium text-sm tracking-wide hover:bg-white/10 hover:border-white/40 transition-all duration-300 backdrop-blur-sm"
             >
-              <span>Contact Me</span>
-              <Sparkles className="w-3.5 h-3.5 text-sky-400 opacity-80 group-hover:rotate-12 transition-transform" />
+              <span>Contact</span>
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
         </div>
 
-        {/* Right 3D Visual Column (5 Cols) */}
-        <div
-          ref={visualRef}
-          data-cursor-text="INTERACT"
-          className="lg:col-span-5 h-[340px] sm:h-[420px] lg:h-[500px] w-full flex items-center justify-center relative cursor-grab active:cursor-grabbing"
-        >
-          <div className="w-full h-full relative">
-            <HeroCanvas />
-
-            {/* Subtle decorative badges */}
-            <div className="absolute bottom-4 left-4 p-3 rounded-xl bg-[#101017]/80 border border-white/[0.08] backdrop-blur-md hidden sm:block">
-              <p className="text-[10px] font-mono uppercase tracking-widest text-zinc-500">
-                Core Specialty
-              </p>
-              <p className="text-xs font-semibold text-white mt-0.5">
-                MERN Stack Architecture
-              </p>
+        {/* Factual Technical Overview (4 Cols) */}
+        <div className="lg:col-span-4 flex flex-col gap-4">
+          <div className="p-6 rounded-2xl bg-[var(--surface)]/80 backdrop-blur-md border border-[var(--border)] shadow-2xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--text-muted)] mb-3">
+              Core Technologies
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {["React.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "Next.js", "Tailwind CSS", "REST APIs"].map((tech) => (
+                <span
+                  key={tech}
+                  className="px-2.5 py-1 rounded-md bg-white/[0.04] border border-[var(--border)] text-xs font-mono text-zinc-300"
+                >
+                  {tech}
+                </span>
+              ))}
             </div>
+          </div>
 
-            <div className="absolute top-6 right-4 p-3 rounded-xl bg-[#101017]/80 border border-white/[0.08] backdrop-blur-md hidden sm:block">
-              <p className="text-[10px] font-mono uppercase tracking-widest text-zinc-500">
-                Experience Craft
-              </p>
-              <p className="text-xs font-semibold text-sky-300 mt-0.5">
-                Creative GSAP &amp; Interactive UI
-              </p>
-            </div>
+          <div className="p-6 rounded-2xl bg-[var(--surface)]/80 backdrop-blur-md border border-[var(--border)] shadow-2xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--text-muted)] mb-2">
+              Education
+            </p>
+            <p className="text-sm font-semibold text-white">
+              Bachelor in Computer Application (BCA)
+            </p>
+            <p className="text-xs text-[var(--text-muted)] font-mono mt-0.5">
+              Tribhuvan University
+            </p>
           </div>
         </div>
       </div>
@@ -328,22 +295,22 @@ export default function Hero() {
       {/* Bottom Scroll-down Indicator */}
       <div
         ref={scrollIndicatorRef}
-        className="flex items-center justify-between pt-8 border-t border-white/[0.06] mt-12 text-xs font-mono text-zinc-500"
+        className="flex items-center justify-between pt-8 border-t border-[var(--border)] mt-12 text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--text-muted)]"
       >
         <div className="flex items-center gap-6">
-          <span>CREATIVE ENGINEER</span>
+          <span>FULL-STACK DEVELOPER</span>
           <span className="hidden sm:inline">•</span>
-          <span className="hidden sm:inline">FULL-STACK SOLUTIONS</span>
+          <span className="hidden sm:inline">KATHMANDU, NEPAL</span>
         </div>
 
         <a
           href="#about"
           onClick={scrollToAbout}
           data-magnetic="true"
-          className="group inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors cursor-pointer"
+          className="group inline-flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors cursor-pointer"
         >
           <span>SCROLL TO EXPLORE</span>
-          <div className="w-7 h-7 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white group-hover:translate-y-0.5 transition-all">
+          <div className="w-7 h-7 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[var(--accent)] group-hover:text-[var(--accent)] group-hover:translate-y-0.5 transition-all">
             <ArrowDown className="w-3.5 h-3.5" />
           </div>
         </a>

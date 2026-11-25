@@ -1,26 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800&family=Inter:wght@400;500;600;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --bg-primary: #070709;
-  --bg-secondary: #0d0d12;
-  --text-primary: #f4f4f5;
-  --text-muted: #9ca3af;
-  --text-dim: #52525b;
+  --bg: #07070A;          /* deep cosmic space void */
+  --surface: #0E0E16;     /* cards, elevated surfaces */
+  --text: #F3F3F6;        /* star-white headings and body */
+  --text-muted: #9E9EA8;  /* warm celestial gray paragraphs and captions */
+  --accent: #FF4B12;      /* vivid solar orange: sun flare, buttons, highlighted words, icons */
+  --accent-dark: #E03A05; /* orange hover state */
+  --dark: #050508;        /* black CTA banner, dark footer */
+  --border: rgba(255, 255, 255, 0.08); /* fine celestial outlines */
+
+  /* Aliases */
+  --bg-primary: #07070A;
+  --bg-secondary: #0E0E16;
+  --text-primary: #F3F3F6;
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-strong: rgba(255, 255, 255, 0.16);
-  --accent-silver: #e2e8f0;
-  --accent-electric: #38bdf8;
 }
 
 html {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* Lenis smooth scrolling rules */
@@ -51,34 +66,34 @@ html.lenis body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #070709;
+  background: #07070A;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: rgba(255, 255, 255, 0.16);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: var(--accent);
 }
 
 /* Selection */
 ::selection {
-  background-color: #f4f4f5;
-  color: #070709;
+  background-color: var(--accent);
+  color: #FFFFFF;
 }
 
 /* Glassmorphic utilities */
 .glass-panel {
-  background: rgba(15, 15, 20, 0.65);
+  background: rgba(14, 14, 22, 0.75);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-card {
-  background: rgba(18, 18, 24, 0.55);
+  background: rgba(14, 14, 22, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -86,31 +101,28 @@ html.lenis body {
 }
 
 .glass-card:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(22, 22, 30, 0.75);
+  border-color: rgba(255, 75, 18, 0.3);
+  background: rgba(18, 18, 28, 0.85);
 }
 
 /* Subtle cinematic noise overlay */
 .bg-noise {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
-/* Shimmer metallic text */
+/* Accent highlight text replacement */
 .text-metallic {
-  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--accent);
 }
 
 .text-silver-gradient {
-  background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--accent);
 }
 
 /* Accessible reduced motion */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   ::before,
   ::after {

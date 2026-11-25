@@ -11,7 +11,7 @@ const skillCategories = [
     title: "Frontend Engineering",
     icon: Layout,
     accent: "from-sky-500/20 to-transparent",
-    description: "Architecting responsive, high-performance user interfaces with modern React paradigms.",
+    description: "Building responsive, component-driven user interfaces with React, Next.js, and modern CSS.",
     skills: [
       { name: "React", level: "Advanced Component Architecture & Hooks" },
       { name: "JavaScript", level: "ES6+, Async, DOM, Engine Internals" },
@@ -25,7 +25,7 @@ const skillCategories = [
     title: "Backend Architecture",
     icon: Server,
     accent: "from-indigo-500/20 to-transparent",
-    description: "Building scalable, secure APIs and micro-services with clean business logic.",
+    description: "Developing RESTful APIs, middleware, routing, and token authentication with Node.js and Express.",
     skills: [
       { name: "Node.js", level: "Event Loop, Streams, Server Optimization" },
       { name: "Express.js", level: "Routing, Middleware, Error Handling" },
@@ -38,7 +38,7 @@ const skillCategories = [
     title: "Database & Storage",
     icon: Database,
     accent: "from-emerald-500/20 to-transparent",
-    description: "Designing efficient data models, relational constraints, and flexible document stores.",
+    description: "Database schema modeling, normalization, and queries across MongoDB and PostgreSQL.",
     skills: [
       { name: "MongoDB", level: "Schema Design, Aggregation Framework, Mongoose" },
       { name: "PostgreSQL", level: "Relational Modeling, Normalization, Queries" },
@@ -50,7 +50,7 @@ const skillCategories = [
     title: "Tools & Ecosystem",
     icon: Wrench,
     accent: "from-purple-500/20 to-transparent",
-    description: "Leveraging modern tooling for streamlined developer workflows and reliable testing.",
+    description: "Version control, API testing, debugging, and productivity tooling.",
     skills: [
       { name: "Git", level: "Branching Strategies, Rebasing, Conflict Resolution" },
       { name: "GitHub", level: "Repositories, Code Reviews, Actions & CI" },
@@ -164,23 +164,23 @@ export default function Skills() {
     <section
       id="skills"
       ref={containerRef}
-      className="relative w-full bg-[#070709] border-t border-white/[0.06] z-20"
+      className="relative w-full bg-transparent border-t border-[var(--border)] z-20"
     >
       <div className="py-28 md:py-36 px-6 sm:px-8 md:px-12 max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-xs font-mono uppercase tracking-widest text-sky-400">
-                03 // Technical Stack
+              <span className="w-6 h-0.5 bg-[var(--accent)] shrink-0" />
+              <span className="text-[11px] uppercase font-semibold tracking-[0.08em] text-[var(--accent)]">
+                Technical Stack
               </span>
-              <div className="h-px w-16 bg-sky-400/40" />
             </div>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tighter uppercase text-white leading-none perspective-1000">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-medium tracking-[-0.02em] uppercase text-[var(--text)] leading-none perspective-1000">
               <span className="inline-block overflow-hidden py-1">
                 <span className="skills-word inline-block mr-3">Skills</span>
                 <span className="skills-word inline-block mr-3">&amp;</span>
-                <span className="skills-word inline-block text-metallic">Expertise.</span>
+                <span className="skills-word inline-block text-[var(--accent)]">Technologies.</span>
               </span>
             </h2>
           </div>
@@ -190,10 +190,11 @@ export default function Skills() {
             <button
               onClick={() => handleCategorySelect("all")}
               data-magnetic="true"
-              className={`px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all duration-300 ${activeCategory === "all"
-                ? "bg-white text-black font-semibold"
-                : "bg-white/[0.04] text-zinc-400 border border-white/10 hover:text-white hover:border-white/20"
-                }`}
+              className={`px-3.5 py-1.5 rounded-full text-[11px] uppercase tracking-[0.08em] font-medium transition-all duration-300 ${
+                activeCategory === "all"
+                  ? "bg-[var(--accent)] text-white shadow-md shadow-[var(--accent)]/20"
+                  : "bg-[var(--surface)]/80 text-[var(--text-muted)] border border-[var(--border)] hover:text-[var(--text)] hover:border-[var(--accent)]/40"
+              }`}
             >
               All
             </button>
@@ -202,10 +203,11 @@ export default function Skills() {
                 key={c.id}
                 onClick={() => handleCategorySelect(c.id)}
                 data-magnetic="true"
-                className={`px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all duration-300 ${activeCategory === c.id
-                  ? "bg-white text-black font-semibold"
-                  : "bg-white/[0.04] text-zinc-400 border border-white/10 hover:text-white hover:border-white/20"
-                  }`}
+                className={`px-3.5 py-1.5 rounded-full text-[11px] uppercase tracking-[0.08em] font-medium transition-all duration-300 ${
+                  activeCategory === c.id
+                    ? "bg-[var(--accent)] text-white shadow-md shadow-[var(--accent)]/20"
+                    : "bg-[var(--surface)]/80 text-[var(--text-muted)] border border-[var(--border)] hover:text-[var(--text)] hover:border-[var(--accent)]/40"
+                }`}
               >
                 {c.title.split(" ")[0]}
               </button>
@@ -224,46 +226,41 @@ export default function Skills() {
                 data-cursor-text="SKILL"
                 onMouseMove={handleCardMove}
                 onMouseLeave={handleCardLeave}
-                className="skills-category-card group relative p-8 rounded-3xl bg-[#0c0c12] border border-white/[0.08] hover:border-white/20 transition-colors duration-300 overflow-hidden will-change-transform"
+                className="skills-category-card group relative p-8 rounded-3xl bg-[var(--surface)]/80 backdrop-blur-md border border-[var(--border)] hover:border-[var(--accent)]/40 transition-colors duration-300 overflow-hidden shadow-2xl will-change-transform"
               >
-                {/* Subtle Ambient Glow */}
-                <div
-                  className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${category.accent} rounded-full blur-3xl pointer-events-none opacity-40 group-hover:opacity-80 transition-opacity duration-700`}
-                />
-
                 {/* Category Header */}
                 <div className="flex items-start justify-between mb-6 relative z-10">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-zinc-300 group-hover:text-white transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-[var(--accent)] group-hover:bg-[var(--accent)] group-hover:text-white transition-colors">
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold tracking-tight text-white">
+                      <h3 className="text-xl font-semibold tracking-tight text-[var(--text)]">
                         {category.title}
                       </h3>
-                      <p className="text-xs text-zinc-500 font-mono mt-0.5">
+                      <p className="text-[11px] uppercase font-semibold tracking-[0.08em] text-[var(--text-muted)] mt-0.5">
                         {category.skills.length} Core Technologies
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-sm text-zinc-400 leading-relaxed mb-6 font-normal relative z-10">
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-6 font-normal relative z-10">
                   {category.description}
                 </p>
 
-                {/* Skills List without Percentage Bars */}
+                {/* Skills List */}
                 <div className="flex flex-col gap-3 relative z-10">
                   {category.skills.map((skill) => (
                     <div
                       key={skill.name}
-                      className="p-3.5 rounded-xl bg-[#121218]/80 border border-white/[0.05] hover:border-white/20 hover:bg-[#181822] transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-1 group/skill"
+                      className="p-3.5 rounded-xl bg-[#12121C]/80 border border-white/[0.06] hover:border-[var(--accent)]/40 hover:bg-[#181826] transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-1 group/skill"
                     >
-                      <span className="text-sm font-semibold text-white tracking-tight flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-sky-400/80 group-hover/skill:bg-sky-400 group-hover/skill:scale-125 transition-all" />
+                      <span className="text-sm font-semibold text-[var(--text)] tracking-tight flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] group-hover/skill:scale-125 transition-all" />
                         {skill.name}
                       </span>
-                      <span className="text-xs font-mono text-zinc-400 group-hover/skill:text-zinc-300">
+                      <span className="text-xs font-mono text-[var(--text-muted)] group-hover/skill:text-zinc-200">
                         {skill.level}
                       </span>
                     </div>

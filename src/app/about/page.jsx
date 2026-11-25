@@ -4,8 +4,8 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 export const metadata = {
-  title: "About Derick Subedi — Creative MERN Developer",
-  description: "Learn more about Derick Subedi, full-stack developer specializing in MERN stack and creative frontend experiences.",
+  title: "About Derick Subedi — Full-Stack MERN Developer",
+  description: "About Derick Subedi, full-stack developer specializing in the MERN stack (MongoDB, Express, React, Node.js) and PostgreSQL.",
 };
 
 export default function AboutPage() {
@@ -14,10 +14,10 @@ export default function AboutPage() {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 pt-8">
         <Link
           href="/#about"
-          className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-400 hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Return to main experience</span>
+          <span>Return to home</span>
         </Link>
       </div>
       <About />

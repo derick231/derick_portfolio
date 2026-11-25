@@ -2,8 +2,8 @@ import "./globals.css";
 import TranstitionProvider from "@/components/TranstitionProvider";
 
 export const metadata = {
-  title: "Derick Subedi — Creative Developer & MERN Specialist",
-  description: "Senior Creative Frontend Developer & MERN Stack Specialist crafting immersive digital experiences.",
+  title: "Derick Subedi — Full-Stack MERN Developer",
+  description: "Derick Subedi — Full-Stack MERN Developer based in Kathmandu, Nepal. Working with React, Node.js, Express, MongoDB, and PostgreSQL.",
 };
 
 export default function RootLayout({ children }) {

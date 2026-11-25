@@ -70,11 +70,10 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-          scrolled
-            ? "py-4 bg-[#070709]/80 backdrop-blur-md border-b border-white/[0.06] shadow-2xl shadow-black/50"
-            : "py-6 bg-transparent border-b border-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${scrolled
+          ? "py-4 bg-[#070709]/80 backdrop-blur-md border-b border-white/[0.06] shadow-2xl shadow-black/50"
+          : "py-6 bg-transparent border-b border-transparent"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 flex items-center justify-between">
           {/* Logo */}
@@ -103,7 +102,7 @@ export default function Navbar() {
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={`relative px-4 py-1.5 text-xs uppercase tracking-widest font-medium rounded-full transition-all duration-300 ${
                     isActive
-                      ? "text-black bg-white shadow-sm"
+                      ? "text-white bg-[var(--accent)] shadow-md"
                       : "text-zinc-400 hover:text-white hover:bg-white/[0.04]"
                   }`}
                 >
@@ -120,7 +119,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               data-magnetic="true"
-              className="group flex items-center gap-1.5 text-xs uppercase tracking-widest font-semibold px-4 py-2 rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300"
+              className="group flex items-center gap-1.5 text-xs uppercase tracking-widest font-semibold px-4 py-2 rounded-full bg-[var(--accent)] text-white hover:bg-[var(--accent-dark)] transition-all duration-300 shadow-md shadow-[var(--accent)]/20"
             >
               Resume
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -140,11 +139,10 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       <div
-        className={`fixed inset-0 z-30 bg-[#070709]/95 backdrop-blur-xl md:hidden transition-all duration-500 flex flex-col justify-between px-8 py-24 ${
-          mobileOpen
-            ? "opacity-100 pointer-events-auto translate-y-0"
-            : "opacity-0 pointer-events-none -translate-y-full"
-        }`}
+        className={`fixed inset-0 z-30 bg-[#070709]/95 backdrop-blur-xl md:hidden transition-all duration-500 flex flex-col justify-between px-8 py-24 ${mobileOpen
+          ? "opacity-100 pointer-events-auto translate-y-0"
+          : "opacity-0 pointer-events-none -translate-y-full"
+          }`}
       >
         <div className="flex flex-col gap-6 pt-8">
           <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">
